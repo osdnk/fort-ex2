@@ -1,4 +1,3 @@
-#define SIZE 512
 program main
     use mm
     implicit none

@@ -1,7 +1,8 @@
+#DEFINE mod mm
 @test
 subroutine SimpleTest()
   use pfunit_mod
-  use mm
+  use mod
   real (kind = 8) :: mtx1(1,1), mtx2(1,1), mtx3(1,1)
   integer(kind = 4) :: ret
   mtx1(1,1) = 5
@@ -13,7 +14,7 @@ end
 @test
 subroutine LongTest()
   use pfunit_mod
-  use mm
+  use mod
   real (kind = 8) :: mtx1(1,10000), mtx2(10000,1), mtx3(1,1)
   integer(kind = 4) :: ret, i
   do i = 1, 10000
@@ -28,7 +29,7 @@ end
 @test
 subroutine LushTest()
  use pfunit_mod
- use mm
+ use mod
  real (kind = 8) :: mtx1(1000,1), mtx2(1, 1000), mtx3(1000,1000), mtxres(1000, 1000)
  integer(kind = 4) :: ret, i, j
  do i = 1, 1000
@@ -46,7 +47,7 @@ end
 @test
 subroutine ElephantTest()
  use pfunit_mod
- use mm
+ use mod
  real (kind = 8) :: mtx1(1000,500), mtx2(500, 700), mtx3(1000,700), mtxres(1000, 700)
  integer(kind = 4) :: ret, i, j
  do i = 1, 1000
@@ -72,7 +73,7 @@ end
 @test
 subroutine NothingSpecialTest()
  use pfunit_mod
- use mm
+ use mod
  real (kind = 8) :: mtx1(3,5), mtx2(5,4), mtx3(3,4), mtxres(3, 4)
  integer(kind = 4) :: ret, i, j
  mtx1 = reshape((/ 1, 2, 4, 6, 8, 1, 6, 3, 6, 3, 6, 4, 8, 4, 4 /), (/3,5/))
@@ -87,7 +88,7 @@ end
 @test
 subroutine EvilTest()
  use pfunit_mod
- use mm
+ use mod
  real (kind = 8) :: mtx1(3,45), mtx2(78,23), mtx3(3,78)
  integer(kind = 4) :: ret
 
