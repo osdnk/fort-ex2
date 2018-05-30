@@ -1,6 +1,6 @@
-#define USE_DOT 0
+#define USE_DOT 1
 #define USE_CACHE 0
-module mm
+module mmmm
     implicit none
 contains
     subroutine mult(first, second, multiply, ret)
@@ -38,43 +38,7 @@ contains
         my = SIZE(multiply(:, 1))
 
         IF (fx == sy .AND. fx * fy == fxy .AND. sx * sy == sxy .AND. fy == my .AND. sx == mx) THEN
-            sum = 0.d0
-            multiply = 0.d0
-#if USE_CACHE
-            do i = 1, my! columns in mmultiply
-                do j = 1, mx ! rows in multiply
-    #if USE_DOT
-                    multiply(i,j)=dot_product(first(i,:),second(:,j))
-    #else
-                    do k = 1, fx
-                        sum = sum + first(i, k) * second(k, j)
-                    end do
-                    multiply(i, j) = sum
-                    sum = 0.d0
-    #endif
-
-                end do
-            end do
-#else
-            do ii = 1, my, ichunk
-                do jj = 1, mx, ichunk
-                    do i = ii, min(ii + ichunk - 1, my)! columns in mmultiply
-                        do j = jj, min(jj + ichunk - 1, mx) ! rows in multiply
-    #if USE_DOT
-                             multiply(i,j)=dot_product(first(i,:),second(:,j))
-    #else
-                            do k = 1, fx
-                                    sum = sum + first(i, k) * second(k, j)
-                                end do
-                                multiply(i, j) = sum
-                                sum = 0.d0
-    #endif
-                        end do
-                    end do
-                end do
-            end do
-#endif
-            ret = 0.d0
+            multiply = MATMUL(first, second)
         ELSE
             ret = 1.d0
         END IF

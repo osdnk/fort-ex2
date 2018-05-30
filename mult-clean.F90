@@ -1,5 +1,3 @@
-#define USE_DOT 0
-#define USE_CACHE 0
 module mm
     implicit none
 contains

@@ -1,3 +1,4 @@
+#DEFINE N 10000
 #DEFINE mod mm
 @test
 subroutine SimpleTest()
@@ -15,27 +16,27 @@ end
 subroutine LongTest()
   use pfunit_mod
   use mod
-  real (kind = 8) :: mtx1(1,10000), mtx2(10000,1), mtx3(1,1)
+  real (kind = 8) :: mtx1(1,N), mtx2(N,1), mtx3(1,1)
   integer(kind = 4) :: ret, i
-  do i = 1, 10000
+  do i = 1, N
      mtx1(1,i) = 1
      mtx2(i,1) = 1
   end do
 
   call mult(mtx1, mtx2, mtx3, ret)
-  @assertEqual(10000, mtx3(1,1))
+  @assertEqual(N, mtx3(1,1))
 end
 
 @test
 subroutine LushTest()
  use pfunit_mod
  use mod
- real (kind = 8) :: mtx1(1000,1), mtx2(1, 1000), mtx3(1000,1000), mtxres(1000, 1000)
+ real (kind = 8) :: mtx1(N,1), mtx2(1, N), mtx3(N,N), mtxres(N, N)
  integer(kind = 4) :: ret, i, j
- do i = 1, 1000
+ do i = 1, N
     mtx2(1,i) = 1
     mtx1(i,1) = 1
-    do j = 1, 1000
+    do j = 1, N
        mtxres(i,j) = 1;
     end do
  end do
@@ -48,21 +49,21 @@ end
 subroutine ElephantTest()
  use pfunit_mod
  use mod
- real (kind = 8) :: mtx1(1000,500), mtx2(500, 700), mtx3(1000,700), mtxres(1000, 700)
+ real (kind = 8) :: mtx1(N,N), mtx2(N, N), mtx3(N,N), mtxres(N, N)
  integer(kind = 4) :: ret, i, j
- do i = 1, 1000
-    do j = 1, 500
+ do i = 1, N
+    do j = 1, N
        mtx1(i,j) = 1;
     end do
  end do
- do i = 1, 500
-   do j = 1, 700
+ do i = 1, N
+   do j = 1, N
      mtx2(i,j) = 1;
    end do
  end do
- do i = 1, 1000
-   do j = 1, 700
-     mtxres(i,j) = 500;
+ do i = 1, N
+   do j = 1, N
+     mtxres(i,j) = N;
    end do
  end do
 
