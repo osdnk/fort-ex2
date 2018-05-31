@@ -1,5 +1,5 @@
-#define USE_DOT 0
-#define USE_CACHE 0
+#define USE_DOT 1
+#define USE_CACHE 1
 module mm
     implicit none
 contains
@@ -18,14 +18,14 @@ contains
         ichunk = 1024
 
 #if USE_DOT
-         !write(*,*) "Using dot!"
+         write(*,*) "Using dot!"
 #else
-         !write(*,*) "Not using dot!"
+         write(*,*) "Not using dot!"
 #endif
 #if USE_CACHE
-         !write(*,*) "Using cache!"
+         write(*,*) "Using cache!"
 #else
-         !write(*,*) "Not using cache!"
+         write(*,*) "Not using cache!"
 #endif
 
         fx = SIZE(first(1, :)) !number of colums in first matrix

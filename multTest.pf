@@ -1,4 +1,4 @@
-#DEFINE N 10000
+#DEFINE N 100
 #DEFINE mod mm
 @test
 subroutine SimpleTest()

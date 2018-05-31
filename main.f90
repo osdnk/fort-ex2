@@ -1,5 +1,8 @@
+#if !defined(mod)
+#define mod mm
+#endif
 program main
-    use mm
+    use mod
     implicit none
     real :: start, finish
     real (kind = 8), dimension(:,:), allocatable :: mtx1, mtx2, mtx3

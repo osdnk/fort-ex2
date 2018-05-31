@@ -22,13 +22,14 @@ test: testSuites.inc mult.o $(OBJS)
 		./*$(OBJ_EXT) $(LIBS) $(FFLAGS)
 
 clean:
-	find . -name "*genmod*" -type f
+	find . -name "*genmod*" -type f -delete
+	rm main main2 test test_with_dot
 
 main:
 	$(F90) mult.F90 main.f90 -o $@ $(FFLAGS) -O2
 
 main2:
-	$(F90) matmult.F90 main.f90 -o $@ $(FFLAGS) -O2
+	$(F90) -D"mod=mmmm" matmult.F90 main.f90 -o $@ $(FFLAGS) -O2
 adder:
 	gcc define-adder.cpp -o define-header
 
