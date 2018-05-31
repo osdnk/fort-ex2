@@ -13,8 +13,8 @@ Task for Fortran classes
 
 
 ### Running
-As runnging might be quite tricky, I strongly advice you te jupyter-notebook file attached where everything should be explained
-I do not consider as crucial to write it here as.
+As runnging might be quite tricky, I strongly advice you to read the jupyter-notebook file attached where everything should be explained
+I do not consider as crucial to write it here.
 
 ### Graphs
 Made in `jupyter notebook`
