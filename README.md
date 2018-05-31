@@ -5,7 +5,11 @@ Task for Fortran classes
 
 ### Prerequisites
 
-installed newest version of `ifort`
+- Installed newest version of `ifort`
+
+- Installed newest version of `phunit`
+
+- Added proper path im `makefile`
 
 
 ### Running
