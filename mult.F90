@@ -1,4 +1,4 @@
-#define USE_DOT 1
+#define USE_DOT 0
 #define USE_CACHE 1
 module mm
     implicit none
